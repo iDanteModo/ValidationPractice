@@ -9,93 +9,80 @@ function validationForm() {
     const password = document.getElementById('password');
     const passwordError = document.querySelector('#password + span.errorMsg');
     const confirm_password = document.getElementById('passwordConfirmation');
-    const confirm_password_Error = document.querySelector('#passwordConfirmation + span.errorMsg');
+    const confirm_password_Error = document.querySelector('#passwordConfirmation+ span.errorMsg');
     const submit = document.querySelector('button');
 
     email.addEventListener('input', () => {
         emailError.textContent ="";
         if(!email.validity.valid){
-            errorDisplay();
+            validateInput(email);
         }
     })
 
     country.addEventListener('input', () => {
         countryError.textContent = "";
         if(!country.validity.valid){
-            errorDisplay();
+            validateInput(country);
         }
     })
 
     zipcode.addEventListener('input', () => {
         zipcodeError.textContent ="";
         if(!zipcode.validity.valid){
-            errorDisplay();
+            validateInput(zipcode);
         }
     })
 
     password.addEventListener('input', () =>{
         passwordError.textContent = "";
         if(!password.validity.valid){
-            errorDisplay();
+            validateInput(password);
+        }else {
+            checkPasswords();
         }
     })
 
     confirm_password.addEventListener('input', () => {
-        confirm_password.textContent = "";
+        confirm_password_Error.textContent = "";
         if(!confirm_password.validity.valid){
-            errorDisplay();
+            validateInput(confirm_password);
+        }else {
+            checkPasswords();
         }
     })
 
-    const errorDisplay = () => {
-        // EMAIL
-        if(email.validity.valueMissing){
-            emailError.textContent = "Email Required";
-            email.classList.add('error');
-        }else if(email.validity.typeMismatch) {
-            emailError.textContent = "Please enter a valid email";
-            email.classList.add('error');
-        }
-        // COUNTRY
-        if(country.validity.valueMissing) {
-            countryError.textContent = "Country Required";
-            country.classList.add('error');
-        }else if(country.validity.patternMismatch) {
-            countryError.textContent = "Please enter a valid country";
-            country.classList.add('error');
-        }
-        // ZIPCODE
-        if(zipcode.validity.valueMissing) {
-            zipcodeError.textContent = "Zipcode Required";
-            zipcode.classList.add('error');
-        }else if(zipcode.validity.patternMismatch) {
-            zipcodeError.textContent = "Please enter a valid Zipcode";
-            zipcode.classList.add('error');
-        }
-        // PASSWORD
-        if(password.validity.valueMissing) {
-            passwordError.textContent = "Password Required";
-            password.classList.add('error');
-        }else if(password.validity.tooShort) {
-            passwordError.textContent = "Minimum 6 characters";
-            password.classList.add('error');
-        }else if(password.validity.tooLong) {
-            passwordError.textContent = "Maximum 15 characters";
-            password.classList.add('error');
-        }
-        // CONFIRM PASSWORD
-        if(confirm_password.validity.valueMissing) {
-            confirm_password_Error.textContent = "Password Required";
-            confirm_password.classList.add('error');
-        }else if(confirm_password.validity.tooShort) {
-            confirm_password_Error.textContent = "Minimum 6 characters";
-            confirm_password.classList.add('error');
-        }else if(confirm_password.validity.tooLong) {
-            confirm_password_Error.textContent = "Maximum 15 characters";
-            confirm_password.classList.add('error');
+    function validateInput(inputField) {
+        const inputName = inputField.dataset.info;
+        const inputError = "#" + inputField.dataset.info + "+span.errorMsg";
+        const iError = document.querySelector(inputError);
+        if(inputField.validity.valueMissing) {
+            iError.textContent = `${inputName} is required`;
+        }else if (inputField.validity.patternMismatch) {
+            iError.textContent = `Please insert a valid ${inputName}`;
+        }else if (inputField.validity.tooShort) {
+            iError.textContent = "Minimum 6 characters";
+        }else if (inputField.validity.typeMismatch) {
+            iError.textContent = `Please insert a valid ${inputName};`
         }
     }
 
+    function checkPasswords(){
+       if(password.value != confirm_password.value){
+        passwordError.textContent = "Passwords do not match";
+        confirm_password_Error.textContent ="Passwords do not match";
+        password.classList.remove('valid');
+        confirm_password.classList.remove('valid');
+        password.classList.add('notValid');
+        confirm_password.classList.add('notValid');
+       }else {
+        passwordError.textContent = "";
+        confirm_password_Error.textContent ="";
+        password.classList.remove('notValid');
+        confirm_password.classList.remove('notValid');
+        password.classList.add('valid');
+        confirm_password.classList.add('valid');
+       }
+        }
 
 };
 

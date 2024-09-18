@@ -69,7 +69,13 @@ input:invalid:focus {
     background-color: rgb(105, 105, 105);
 }
 
-.error {
+.valid {
+    outline: none;
+    border: 1px green solid;
+    background-color: rgb(105, 105, 105);
+}
+
+.notValid {
     outline: none;
     border: 1px red solid;
     background-color: rgb(105, 105, 105);
@@ -80,7 +86,8 @@ input:invalid:focus {
     color: red;
 }
 
-input:valid {
+input[type="text"]:valid,
+input[type ="email"]:valid {
     border: 1px green solid;
 }
 
