@@ -11,6 +11,7 @@ function validationForm() {
     const confirm_password = document.getElementById('passwordConfirmation');
     const confirm_password_Error = document.querySelector('#passwordConfirmation+ span.errorMsg');
     const submit = document.querySelector('button');
+    let click = 0;
 
     email.addEventListener('input', () => {
         emailError.textContent ="";
@@ -49,6 +50,14 @@ function validationForm() {
         }else {
             checkPasswords();
         }
+    })
+
+    submit.addEventListener('click', () => {
+        localStorage.setItem('Email'+ click, email.value);
+        localStorage.setItem('Country'+ click, country.value);
+        localStorage.setItem('Zipcode' + click, zipcode.value);
+        localStorage.setItem('Password' + click, password.value);
+        click ++;
     })
 
     function validateInput(inputField) {
