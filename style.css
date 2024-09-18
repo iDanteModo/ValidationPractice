@@ -1,0 +1,101 @@
+@import url('../node_modules/modern-normalize/modern-normalize.css');
+
+:root {
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, figure, p, ol, ul {
+  margin: 0;
+}
+
+ol[role="list"], ul[role="list"] {
+  list-style: none;
+  padding-inline: 0;
+}
+
+h1, h2, h3, h4, h5 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+img {
+  display: block;
+  max-inline-size: 100%;
+}
+
+/* DANTE CODE HERE -----------*/
+
+* {
+    color-scheme: dark;
+}
+
+body {
+    margin-top: 100px;
+    height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 100px;
+}
+
+header>h1 {
+    font-size: 4rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    position: static;
+}
+
+.row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input {
+    outline: none;
+    border: 1px whitesmoke solid;
+    background-color: rgb(57, 57, 57);
+}
+
+input:invalid:focus {
+    outline: none;
+    border: 1px red solid;
+    background-color: rgb(105, 105, 105);
+}
+
+.error {
+    outline: none;
+    border: 1px red solid;
+    background-color: rgb(105, 105, 105);
+}
+
+.errorMsg {
+    font-size: 0.8rem;
+    color: red;
+}
+
+input:valid {
+    border: 1px green solid;
+}
+
+button {
+    border-radius: 5px;
+    border: 1px transparent solid;
+    padding: 5px 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    border: 1px purple solid;
+    background-color: rgb(87, 87, 87);
+}
+
+button:active {
+    background-color: rgb(67, 67, 67);
+}

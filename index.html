@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validation Dante</title>
+    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Dante Validation</h1>
+    </header>
+    <div class="container">
+        <form action="" novalidate>
+            <div class="row">
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" required>
+                <span class="errorMsg" id="emailError" aria-live="polite"></span>
+            </div>
+            <div class="row">
+                <label for="country">Country:</label>
+                <input type="text" name="country" id="country" required pattern="[A-Za-z]+">
+                <span class="errorMsg" aria-live="polite"></span>
+            </div>
+            <div class="row">
+                <label for="zipcode">Zipcode:</label>
+                <input type="text" name="zipcode" id="zipcode" required pattern="[0-9]{5}">
+                <span class="errorMsg" aria-live="polite"></span>
+            </div>
+            <div class="row">
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" required minlength="6" maxlength="15">
+                <span class="errorMsg" aria-live="polite"></span>
+            </div>
+            <div class="row">
+                <label for="passwordConfirmation">Confirm Password</label>
+                <input type="password" name="passwordConfirmation" id="passwordConfirmation" required minlength="6" maxlength="15">
+                <span class="errorMsg" aria-live="polite"></span>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    
+</body>
+</html>
